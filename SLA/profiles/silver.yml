@@ -1,0 +1,4 @@
+---
+ - name: important client 
+    priority: set=80
+	services: name=streamig-services,voip

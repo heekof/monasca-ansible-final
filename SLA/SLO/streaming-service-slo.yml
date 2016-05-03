@@ -1,0 +1,20 @@
+# include metrics
+# include clients
+# include service
+---
+ - service: streaming-services
+   actors:
+   actions:
+   profiles: name=basic
+   slo:
+    - name: conditional slo for average throughput
+      time: start=768676 end=77867867 format=Unix
+      metric: name=cpu
+        -condition: type=less percentile=0.2
+        -threshold:  avg=true value=2 format=percentile
+      metric: name=ram
+        -condition: type=less
+        -threshold:  avg
+      metric: name=net
+        -condition: type=less
+        -threshold:  avg

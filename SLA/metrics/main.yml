@@ -1,0 +1,33 @@
+# Here put the metric definition
+
+
+
++---------------------------------------------------+--------------------------------------------+
+| name                                              | dimensions                                 |
++---------------------------------------------------+--------------------------------------------+
+| alarm-state-transitions-added-to-batch-counter[0] | url: http://localhost:8091/metrics         |
+|                                                   | hostname: agent                            |
+|                                                   | component: monasca-persister               |
+|                                                   | service: monitoring                        |
+| alarm-state-transitions-added-to-batch-counter[1] | url: http://localhost:8091/metrics         |
+|                                                   | hostname: agent                            |
+|                                                   | component: monasca-persister               |
+|                                                   | service: monitoring                        |
+| cpu.idle_perc                                     | hostname: agent                            |
+|                                                   | service: monitoring                        |
+| cpu.stolen_perc                                   | hostname: agent                            |
+|                                                   | service: monitoring                        |
+| cpu.system_perc                                   | hostname: agent                            |
+|                                                   | service: monitoring                        |
+| cpu.user_perc                                     | hostname: agent                            |
+|                                                   | service: monitoring                        |
+| cpu.wait_perc                                     | hostname: agent                            |
+|                                                   | service: monitoring                        |
+| disk.inode_used_perc                              | device: vda1                               |
+|                                                   | hostname: agent                            |
+|                                                   | mount_point: /                             |
+|                                                   | service: monitoring                        |
+| disk.space_used_perc                              | device: vda1                               |
+|                                                   | hostname: agent                            |
+|                                                   | mount_point: /                             |
+|                                                   | service: monitoring                        |
