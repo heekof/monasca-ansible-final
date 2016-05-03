@@ -1,0 +1,4 @@
+---
+ - name: the best client $$
+    priority: set=100
+	services: name=streamig-services,voip

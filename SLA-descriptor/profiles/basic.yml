@@ -1,0 +1,6 @@
+---
+ - name: a basic client 
+    priority: set=10
+	services: name=streamig-services,voip
+	
+    

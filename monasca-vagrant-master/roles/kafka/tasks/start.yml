@@ -1,0 +1,9 @@
+---
+- name: Enable and Start Kafka
+  service: name=kafka state=started enabled=yes
+
+# Jaafar to debug
+
+- name: wait for kafka port
+  wait_for: host={{kafka_listen_address| default('localhost')}} port={{kafka_port}} state=started timeout={{ monasca_wait_for_period }}
+  when: verify
