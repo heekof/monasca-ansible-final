@@ -1,0 +1,19 @@
+- hosts: devstack
+  sudo: yes
+  vars:
+    monasca_checks:
+      host_alive:
+        init_config:
+          ssh_port: 22
+          ssh_timeout: 0.5
+          ping_timeout: 1
+        instances:
+          - name: mini-mon
+            host_name: mini-mon
+            alive_test: ssh
+  pre_tasks:
+    - name: apt-get update
+      apt: update_cache=yes
+      ignore_errors: true
+  roles:
+    - {role: monasca-agent, tags: [agent]}

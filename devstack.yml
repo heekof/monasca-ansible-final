@@ -15,15 +15,16 @@
     - name: apt-get update
       apt: update_cache=yes
       ignore_errors: true
-    - name: Install virtualenv
-      apt: name=python-virtualenv
-    - name: Install Agent plugin dependencies in virtualenv
-      pip: name={{item}} state=present virtualenv="{{monasca_virtualenv_dir}}"
-      with_items:
-         - lxml
-         - libvirt-python
-         - mysql-python
-         - python-novaclient
+    # - name: Install virtualenv
+    #   apt: name=python-virtualenv
+    #
+    # - name: Install Agent plugin dependencies in virtualenv
+    #   pip: name={{item}} state=present virtualenv="{{monasca_virtualenv_dir}}"
+    #   with_items:
+    #      - lxml
+    #      - libvirt-python
+    #      - mysql-python
+    #     - python-novaclient
     - name: Add mini-mon to hosts file
       lineinfile: dest=/etc/hosts regexp="^{{ mini_mon }}" line="{{ mini_mon }} mini-mon" state=present
   tasks:
