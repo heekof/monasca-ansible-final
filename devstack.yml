@@ -12,21 +12,21 @@
             host_name: mini-mon
             alive_test: ssh
   pre_tasks:
-    - name: apt-get update
-      apt: update_cache=yes
-      ignore_errors: true
-    # - name: Install virtualenv
-    #   apt: name=python-virtualenv
-    #
-    # - name: Install Agent plugin dependencies in virtualenv
-    #   pip: name={{item}} state=present virtualenv="{{monasca_virtualenv_dir}}"
-    #   with_items:
-    #      - lxml
-    #      - libvirt-python
-    #      - mysql-python
-    #     - python-novaclient
-    - name: Add mini-mon to hosts file
-      lineinfile: dest=/etc/hosts regexp="^{{ mini_mon }}" line="{{ mini_mon }} mini-mon" state=present
+     - name: apt-get update
+       apt: update_cache=yes
+       ignore_errors: true
+     - name: Install virtualenv
+       apt: name=python-virtualenv
+    
+     - name: Install Agent plugin dependencies in virtualenv
+       pip: name={{item}} state=present virtualenv="{{monasca_virtualenv_dir}}"
+       with_items:
+          - lxml
+          - libvirt-python
+          - mysql-python
+          - python-novaclient
+     - name: Add mini-mon to hosts file
+       lineinfile: dest=/etc/hosts regexp="^{{ mini_mon }}" line="{{ mini_mon }} mini-mon" state=present
   tasks:
     - name: Setup the monasca cli credentials in the default environment
       copy: src=env.sh dest=/etc/profile.d/monasca_cli.sh owner=root group=root mode=0644

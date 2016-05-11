@@ -78,7 +78,7 @@
 - name: Define default alarms
   hosts: mini-mon
   gather_facts: no
-  roles:
-    - {role: monasca-default-alarms, tags: [alarms]}
+  #roles:
+    #- {role: monasca-default-alarms, tags: [alarms]}
 
 - include: smoke.yml
