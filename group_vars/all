@@ -1,6 +1,6 @@
 ---
 devstack: 157.159.232.218
-mini_mon: 192.166.1.124
+mini_mon: 157.159.232.200
 
 keystone_url: "http://{{devstack}}:35357/v3"
 monasca_api_host: "{{mini_mon}}"

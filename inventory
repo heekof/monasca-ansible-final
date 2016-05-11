@@ -1,4 +1,4 @@
 [mini-mon]
 mini-mon
-[devstack]
-devstack
+[local]
+localhost ansible_connection=local # connect without ssh
