@@ -43,7 +43,7 @@ Notes :
 
 in Monasca Server: /opt/kafka_2.9.2-0.8.1.1/bin
 
-sudo ./kafka-server-start.sh ../config/server.properties
+sudo /opt/kafka/bin/kafka-server-start.sh /etc/kafka/server.properties
 
 Error = "java.lang.IllegalArgumentException: requirement failed: Missing required property 'broker.id'
 	at scala.Predef$.require(Predef.scala:214)
@@ -80,3 +80,40 @@ Start mon-api:sudo /usr/bin/java -Dfile.encoding=UTF-8 -Xmx1g -cp /opt/monasca/m
 Monasca-api problem: api-config.yml.j2 line missing in line 18:
  validNotificationPeriods:
   - 60
+
+#############################
+############## Kafka ###############
+
+run_cmd = /opt/monasca/bin/python /opt/monasca//hpcloud-mon-monasca-ci-59283f2//tests/smoke/smoke2.py
+
+sudo pip install kafka
+
+in host_vars/mini-mon ==>kafka_listen_address: localhost
+
+change /etc/hosts => 127.0.0.1 monasca-server
+
+
+tail -f /var/log/monasca/api/monasca-api.log
+
+#####################
+########################
+
+
+File "/opt/monasca//hpcloud-mon-monasca-ci-59283f2//tests/smoke/smoke2.py", line 116, in debug_kafka
+    kafka_client = kafka.client.KafkaClient(nodeip + ':9092')
+TypeError: __init__() takes exactly 1 argument (2 given)
+
+################# mysql
+mysql -u root -p
+
+use mon;
+
+show tables;
+
+SELECT * FROM table
+
+ps -ef | grep monasca
+
+sudo cat /etc/monasca/agent/agent.yaml
+
+sudo service monasca-agent status
