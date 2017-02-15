@@ -1,5 +1,6 @@
 - name: Check if database type is set
   hosts: mini-mon
+#  become: true
   tasks:
     - name: Check for database_type
       fail: msg="Must set database type when running this playbook. To pass via command line use -e."

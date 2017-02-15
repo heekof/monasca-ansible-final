@@ -1,14 +1,14 @@
 ---
 api_region: useast
-influxdb_url: "http://{{mini_mon}}:8086"
+influxdb_url: "http://localhost:8086"
 kafka_events_partitions: 4
 kafka_metrics_partitions: 4
 kafka_replicas: 1
-kafka_hosts: "{{mini_mon}}:9092"
-kafka_listen_address: "{{mini_mon}}"
+kafka_hosts: localhost:9092
+kafka_listen_address: 10.11.12.38
 kafka_heap_opts: "-Xmx256m"
 keystone_host: "{{devstack}}"
-database_host: "{{mini_mon}}"
+database_host: localhost
 nimbus_host: "{{mini_mon}}"
 percona_package: percona-xtradb-cluster-56
 smtp_host: localhost
@@ -18,7 +18,7 @@ vertica_jdbc_location: /vagrant/vertica_jdbc.jar
 vertica_ssh_key_location: /vagrant
 vertica_url: "jdbc:vertica://localhost:5433/mon"
 zookeeper_hosts: "{{mini_mon}}:2181"
-influxdb_host: "{{mini_mon}}"
+influxdb_host: localhost
 
 # common credentials
 mon_influxdb_users:
@@ -40,12 +40,12 @@ vertica_users:
 keystone_auth_method: password
 keystone_user: mini-mon
 keystone_password: password
-mysql_admin_password: password
-mysql_root_password: password
+mysql_admin_password: root
+mysql_root_password: root
 mon_mysql_users:
   - username: notification
-    password: password
+    password: root
   - username: monapi
-    password: password
+    password: root
   - username: thresh
-    password: password
+    password: root

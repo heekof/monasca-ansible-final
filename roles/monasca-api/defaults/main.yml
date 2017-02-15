@@ -25,7 +25,7 @@ database_name: mon
 database_type: influxdb
 hibernate_support_enabled: "false"
 database_port: 3306
-database_host: 192.168.10.4
+database_host: localhost
 database_user: monapi
 database_password: password
 driver_class: org.postgresql.ds.PGPoolingDataSource

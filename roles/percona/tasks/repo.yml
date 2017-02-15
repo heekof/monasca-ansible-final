@@ -2,6 +2,7 @@
 # file: tasks/repo.tml
 
 - name: Obtaining percona public key
+#  apt_key: url=http://www.percona.com/downloads/RPM-GPG-KEY-percona
   apt_key: url=http://www.percona.com/downloads/RPM-GPG-KEY-percona
           state=present
 
@@ -15,4 +16,3 @@
 
 - name: Update apt cache
   apt: update_cache=yes
-

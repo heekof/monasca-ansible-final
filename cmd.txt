@@ -1,0 +1,82 @@
+on devstack:
+
+sudo apt-get update
+
+sudo apt-get install python-dev
+
+sudo apt-get install python-MySQLdb
+
+sudo apt-get install libxml2-dev libxslt1-dev
+
+sudo apt-get  install pkg-config
+
+sudo apt-get install libvirt-dev
+
+sudo apt-get install mysql-server
+
+sudo apt-get install libmysqlclient-dev
+
+sudo apt-get install libmariadbclient-dev
+
+sudo apt-get install libssl-dev
+
+############################################
+The horizon error logs are available at /var/log/apache2/horizon_error.log. As a fix to this error, ensure the host IP onto which horizon is being served from is in the ALLOWED_HOSTS. More info, consult this bug file: https://bugs.launchpad.net/devstack/+bug/1643050 (https://bugs.launchpad.net/devstack/+...)
+
+For the lazy ones.. :). Until a better solution comes up, for now this fix works:
+
+    Head over to the file: /opt/stack/openstack/horizon/blob/master/openstack_dashboard/local/local_settings.py
+
+    Edit the line #ALLOWED_HOSTS=['YOUR_HOST_IP',] to suit yours.
+
+    E.g in mine, I have edited to this: ALLOWED_HOSTS=['192.168.10.99',]
+
+    **192.168.10.99** --being the IP address of the host onto which
+    horizon is installed on.
+
+    Restart apache webserver with sudo service apache2 restart
+
+    Then check if it all works on the browser: http://YOUR_HOST_IP/dashboard
+##################################################
+
+Notes :
+
+in Monasca Server: /opt/kafka_2.9.2-0.8.1.1/bin
+
+sudo ./kafka-server-start.sh ../config/server.properties
+
+Error = "java.lang.IllegalArgumentException: requirement failed: Missing required property 'broker.id'
+	at scala.Predef$.require(Predef.scala:214)
+	at kafka.utils.VerifiableProperties.getIntInRange(VerifiableProperties.scala:45)
+	at kafka.server.KafkaConfig.<init>(KafkaConfig.scala:49)
+	at kafka.server.KafkaConfig.<init>(KafkaConfig.scala:31)
+	at kafka.Kafka$.main(Kafka.scala:35)
+	at kafka.Kafka.main(Kafka.scala)"
+
+  ####################################"
+
+  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8507EFA5
+
+###############################
+
+#########################################
+#########################################
+########################################
+THE PROBLEM WITH KAFKA WAIT IS host_vars in mini_mon line 7:
+kafka_hosts: localhost:9092
+kafka_listen_address: 10.11.12.38
+##########################################
+#########################################
+#########################################
+
+Percona install ==> apt-key adv --keyserver keys.gnupg.net --recv-keys 8507EFA5
+source : https://www.percona.com/blog/2016/10/13/new-signing-key-for-percona-debian-and-ubuntu-packages/
+
+########################
+
+
+Start mon-api:sudo /usr/bin/java -Dfile.encoding=UTF-8 -Xmx1g -cp /opt/monasca/monasca-api.jar:/opt/monasca/vertica/vertica_jdbc.jar monasca.api.MonApiApplication server /etc/monasca/api-config.yml
+
+Monasca-api problem: api-config.yml.j2 line missing in line 18:
+ validNotificationPeriods:
+  - 60

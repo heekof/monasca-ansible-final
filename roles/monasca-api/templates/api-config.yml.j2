@@ -1,7 +1,10 @@
 # The region for which all metrics passing through this server will be persisted
 region: "{{api_region}}"
 
-maxQueryLimit: 10000
+# This is the most important thing !!!
+# set to 10 Millions
+
+maxQueryLimit: 10000000
 
 # Whether this server is running on a secure port
 accessedViaHttps: false
@@ -11,6 +14,9 @@ metricsTopic: metrics
 
 # Topic for publishing domain events to
 eventsTopic: events
+
+validNotificationPeriods:
+  - 60
 
 kafka:
   brokerUris:
